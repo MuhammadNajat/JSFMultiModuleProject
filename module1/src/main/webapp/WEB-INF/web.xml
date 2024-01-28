@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <context-param>
+        <param-name>jakarta.faces.FACELETS_REFRESH_PERIOD</param-name>
+        <param-value>0</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>jakarta.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>
+            jakarta.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
+        </param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <!--automatic extensionless mapping. Like localhost:8080/hello-->
+<context-param>
+<param-name>
+    jakarta.faces.AUTOMATIC_EXTENSIONLESS_MAPPING
+</param-name>
+<param-value>true</param-value>
+</context-param>
+
+<context-param>
+<param-name>jakarta.faces.CLIENT_WINDOW_MODE</param-name>
+<param-value>url</param-value>
+</context-param>
+
+<context-param>
+<param-name>jakarta.faces.NUMBER_OF_CLIENT_WINDOWS</param-name>
+<param-value>25</param-value>
+</context-param>
+
+<context-param>
+<param-name>primefaces.THEME</param-name>
+<param-value>saga</param-value>
+</context-param>
+
+        <!--<context-param>
+            <param-name>jakarta.faces.WEBAPP_RESOURCES_DIRECTORY</param-name>
+            <param-value>/WEB-INF/resources</param-value>
+        </context-param>-->
+
+        <!--<context-param>
+            <param-name>com.sun.faces.numberOfLogicalViews</param-name>
+            <param-value>25</param-value>
+        </context-param>-->
+
+        <!--default value is 25-->
+        <!--<context-param>
+            <param-name>com.sun.faces.numberOfActiveViewMaps</param-name>
+            <param-value>15</param-value>
+        </context-param>-->
+
+        <!--<context-param>
+            <param-name>jakarta.faces.FACELETS_BUFFER_SIZE</param-name>
+            <param-value>102400</param-value> &lt;!&ndash; 100 kB. &ndash;&gt;
+        </context-param>-->
+
+        <!--<context-param>
+            <param-name>jakarta.faces.SEPARATOR_CHAR</param-name>
+            <param-value>-</param-value>
+        </context-param>-->
+
+<welcome-file-list>
+<welcome-file>landing.xhtml</welcome-file>
+</welcome-file-list>
+
+<deny-uncovered-http-methods />
+<security-constraint>
+<web-resource-collection>
+    <web-resource-name>Application pages</web-resource-name>
+    <url-pattern>/app/*</url-pattern>
+    <url-pattern>/ccms/*</url-pattern>
+    <url-pattern>/marketplace/*</url-pattern>
+    <url-pattern>/clientOnboarding/*</url-pattern>
+    <url-pattern>/entryRestricted/*</url-pattern>
+    <http-method>PUT</http-method>
+    <http-method>DELETE</http-method>
+    <http-method>GET</http-method>
+    <http-method>POST</http-method>
+</web-resource-collection>
+<auth-constraint>
+    <role-name>ADMIN</role-name>
+    <role-name>USER</role-name>
+</auth-constraint>
+</security-constraint>
+
+<security-role>
+<role-name>USER</role-name>
+</security-role>
+<security-role>
+<role-name>ADMIN</role-name>
+</security-role>
+
+<session-config>
+<session-timeout>30</session-timeout> <!-- Set session timeout to 30 minutes -->
+</session-config>
+
+<error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/errorpages/404.xhtml</location>
+</error-page>
+<error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/errorpages/505.xhtml</location>
+</error-page>
+        </web-app>

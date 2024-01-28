@@ -1,0 +1,15 @@
+.ui-datatable thead th {
+    background-color: #EEEEEE !important;
+    text-align: center !important;
+}
+.ui-datatable-odd {
+    background-color: #FAFAFA !important; /* Even row background color */
+}
+
+.ui-datatable tbody td {
+    text-align: center !important;
+}
+
+.hide-column-filter {
+    display: none !important;
+}
